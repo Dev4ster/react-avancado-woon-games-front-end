@@ -1,17 +1,20 @@
 import { screen } from '@testing-library/react'
 import { renderWithTheme } from 'utils/tests/helpers'
+import { AddShoppingCart } from 'styled-icons/material-outlined'
 
 import Button from '.'
 
 describe('<Button />', () => {
   it('should render the medium size by default', () => {
-    renderWithTheme(<Button>Won Games</Button>)
+    const { container } = renderWithTheme(<Button>Won Games</Button>)
 
     expect(screen.getByRole('button', { name: /Won Games/i })).toHaveStyle({
       height: '4rem',
       padding: '0.8rem 3.2rem',
       'font-size': '1.4rem'
     })
+
+    expect(container.firstChild).toMatchSnapshot()
   })
 
   it('should render the small size', () => {
@@ -39,5 +42,27 @@ describe('<Button />', () => {
     expect(screen.getByRole('button', { name: /Won Games/i })).toHaveStyle({
       width: '100%'
     })
+  })
+
+  it('should render an icon version', () => {
+    renderWithTheme(
+      <Button icon={<AddShoppingCart data-testid="icon" />}>Won Games</Button>
+    )
+
+    expect(screen.getByText(/Won Games/i)).toBeInTheDocument()
+    expect(screen.getByTestId('icon')).toBeInTheDocument()
+  })
+
+  it('should render button as a link', () => {
+    renderWithTheme(
+      <Button as="a" href="/link/">
+        Won Games
+      </Button>
+    )
+
+    expect(screen.getByRole('link', { name: /Won Games/i })).toHaveAttribute(
+      'href',
+      '/link/'
+    )
   })
 })

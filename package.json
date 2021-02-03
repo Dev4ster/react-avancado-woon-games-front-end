@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint src --max-warnings=0",
     "test": "jest",
+    "test:clear": "jest --clearCache",
     "test:watch": "yarn test --watch",
     "generate": "yarn plop --plopfile generators/plopfile.js",
     "storybook": "start-storybook -s ./public -p 6006",
@@ -30,6 +31,7 @@
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "styled-components": "5.2.1",
+    "styled-icons": "^10.27.0",
     "styled-media-query": "^2.1.2"
   },
   "devDependencies": {
