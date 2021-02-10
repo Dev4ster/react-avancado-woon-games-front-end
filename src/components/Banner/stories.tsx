@@ -28,7 +28,7 @@ export const Default: Story<BannerProps> = (args) => (
 )
 
 export const WithRibbon: Story<BannerProps> = (args) => (
-  <div style={{ maxWidth: '54rem', margin: '0 auto' }}>
+  <div style={{ maxWidth: '54rem', margin: '0 auto', padding: '3rem' }}>
     <Banner {...args} />
   </div>
 )
